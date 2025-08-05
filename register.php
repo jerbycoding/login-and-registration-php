@@ -43,7 +43,7 @@
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input
-            type="email"
+            type="text"
             class="form-control"
             name="email"
             id=""
@@ -69,7 +69,7 @@
     >
         Submit
     </button>
-    <small class="text-muted">Do you have Account? <a href="index.php">Login</a></small>
+    <small class="text-muted">Do you have Account? <a href="login.php">Login</a></small>
     </form>
     </div>
 
