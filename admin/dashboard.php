@@ -1,5 +1,7 @@
 <?php
-    include "../includes/db.php";  
+    include "../includes/db.php";
+    include "authentication.php";
+    admin_authentication();
 ?>
   
 <?php 

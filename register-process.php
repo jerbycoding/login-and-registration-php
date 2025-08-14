@@ -13,6 +13,10 @@
         $checkEmail = $conn->prepare("SELECT email from users WHERE email = ?");
         $checkEmail->bind_param("s", $email);
         $checkEmail->execute();
+        $checkEmail->store_result();
+        if($checkEmail->num_rows > 0){
+            $errors[] = "Email is already taken";   
+        }
         if(strlen($username) < 4){
             $errors[] = "Your username must be 4 characters";
         }
@@ -21,9 +25,6 @@
         }
         if(!isValidName($last)){
             $errors[] = "Last name contains invalid characters";
-        }
-        if($checkEmail->num_rows !== 1){
-            $errors[] = "Email is already taken";   
         }
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $errors[] = "Invalid input for email";
@@ -49,7 +50,5 @@
             }
             
         }
-        
-
     }
 ?>

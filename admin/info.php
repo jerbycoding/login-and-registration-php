@@ -1,4 +1,9 @@
 <?php
+    include "../includes/db.php";
+    
+
+?>
+<?php
     include "../includes/header.php"
 ?>
 
@@ -44,22 +49,31 @@
     </div>
 </div>
 <script>
-
     let modal = document.getElementById('modal');
     let proceed = document.getElementById('proceedBtn');
     let cancel = document.getElementById('cancelBtn');
-    
     let current_target = null;
 
     document.addEventListener('dblclick', (e)=>{
         if (e.target.classList.contains('card-text')){
-            current_target = e.target.innerText;
+            current_target = e.target;
             modal.style.display = 'flex';
         }
     })
-    proceed.onclick() = ()=>{
-        
-    }
+    proceed.addEventListener('click', ()=>{
+        const input = document.createElement('input');
+        input.value = current_target.innerText;
+        current_target.replaceWith(input);
+        input.focus();
+        input.addEventListener('blur',()=>{
+            const newP = document.createElement('p');
+            newP.innerText = input.value;
+            newP.classList.add('card-text');
+            input.replaceWith(newP);
+        })
+        modal.style.display = 'none';
+        current_target = null;
+    })
     cancel.onclick = ()=>{
         modal.style.display  = 'none';
         current_target = null;

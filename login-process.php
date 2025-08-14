@@ -9,13 +9,15 @@
         $stmt->execute();
         $result = $stmt->get_result();
         if($result->num_rows === 1){
-            $user = $result->fetch_assoc();
-            $_SESSION['id'] = $user['person_id'];
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['last_name'] = $user['last_name'];
-            $_SESSION['first_name'] = $user['first_name'];
-            $_SESSION['username'] = $user['username'];
-            header('location: index.php');
+            $db_user = $result->fetch_assoc();
+            if(password_verify($password, $db_user['pass'])){
+                $_SESSION['id'] = $db_user['person_id'];
+                $_SESSION['email'] = $db_user['email'];
+                $_SESSION['last_name'] = $db_user['last_name'];
+                $_SESSION['first_name'] = $db_user['first_name'];
+                $_SESSION['username'] = $db_user['username'];
+                header('location: index.php');
+            }            
         }else{
             echo "Wrong email or password";
         }
