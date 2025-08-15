@@ -1,6 +1,6 @@
 <?php
-    function admin_authentication(){
-        if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 'admin'){
+    function _ADMIN_AUTHENTICATION_(){
+        if (!isset($_SESSION['admin']) && $_SESSION['admin'] != 'admin'){
                 header('location: login.php');
         }
     }

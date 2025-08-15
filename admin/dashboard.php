@@ -1,7 +1,10 @@
 <?php
+    session_start();
     include "../includes/db.php";
     include "authentication.php";
-    admin_authentication();
+    _ADMIN_AUTHENTICATION_();
+    $data = $conn->query("SELECT person_id, first_name, last_name, email FROM users");
+
 ?>
   
 <?php 
@@ -23,19 +26,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="">
-                    <td scope="row">demodomo</td>
-                    <td>jeryb.yi@yahoo.com</td>
+               
+                
+                <?php
+                while($row = $data->fetch_assoc()){?>
+                    <tr class="">
+                        <td scope="row"><?= $row['first_name']?></td>
+                        <td scope ="row"><?= $row['last_name']?></td>
                     <td>
-                        <a href="info.php" style="color:black;"><i class="fa-regular fa-circle-user"></i></a>
+                        <a href="info.php?id=<?= $row['person_id']?>" color:black;"><i class="fa-regular fa-circle-user"></i></a>
                         <a href="delete.php" style="color: black;"><i class="fa-regular fa-trash-can"></i></a>
                     </td>
-                </tr>
-                <tr class="">
-                    <td scope="row">Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
-                </tr>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>

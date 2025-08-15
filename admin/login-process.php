@@ -11,6 +11,7 @@
         $result = $stmt->get_result();
         $admin = $result->fetch_assoc();
         if(password_verify( $password,$admin['password'])){
+            $_SESSION['admin'] = $admin['username'];
             header('location: dashboard.php');
         }else{
             echo "Wrong Password";

@@ -1,15 +1,16 @@
 <?php
+    session_start();
     include "../includes/db.php";
+    include 'authentication.php';
+    _ADMIN_AUTHENTICATION_();
     
-
-?>
+    ?>
 <?php
-    include "../includes/header.php"
+    include "../includes/header.php";
+    echo $_GET['id'];
 ?>
 
-<div id="modal" class="vw-100 vh-100 position-fixed top-0 start-0  justify-content-center align-items-start" style="background: rgba(0, 0, 0, 0.5); display: none; z-index: 1050;">
-    
-
+<!-- <div id="modal" class="vw-100 vh-100 position-fixed top-0 start-0  justify-content-center align-items-start" style="background: rgba(0, 0, 0, 0.5); display: none; z-index: 1050;"> 
     <div class="bg-warning p-3 rounded mt-5">
         <p class="m-0">Are you sure you wanna Edit ? </p>
         <div class="mt-3">
@@ -19,6 +20,8 @@
     </div>
 
 </div>
+
+
 <div  class="position-absolute top-50 start-50 translate-middle p-3">
     <h1>INFO</h1>
     <div class="d-flex gap-2">
@@ -81,4 +84,4 @@
     
 
 
-</script>
+</script> -->
