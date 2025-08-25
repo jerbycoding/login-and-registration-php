@@ -1,7 +1,8 @@
 <?php
     session_start();
     include "../includes/db.php";
-    
+    include "authentication.php";
+    _ADMIN_AUTHENTICATION_();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $user = htmlspecialchars(trim($_POST['user']));
         $password = htmlspecialchars(trim($_POST['password']));

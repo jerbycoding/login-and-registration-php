@@ -35,7 +35,8 @@
                         <td scope ="row"><?= $row['last_name']?></td>
                     <td>
                         <a href="info.php?id=<?= $row['person_id']?>" color:black;"><i class="fa-regular fa-circle-user"></i></a>
-                        <a href="delete.php" style="color: black;"><i class="fa-regular fa-trash-can"></i></a>
+                        <a href="update_user.php?id=<?= $row['person_id']?>"><i class="fa-solid fa-file-pen"></i></a>
+                        <a href="delete.php?id=<?= $row['person_id']?>"style="color: black;"><i class="fa-regular fa-trash-can"></i></a>
                     </td>
                     </tr>
                 <?php } ?>
